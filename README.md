@@ -1,2 +1,1 @@
-# shungitewarrior.github.io
 tjabbalabba
