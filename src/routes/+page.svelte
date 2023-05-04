@@ -3,10 +3,10 @@
 
     <!-- svelte-ignore a11y-media-has-caption -->
     <video controls autoplay loop >
-        <source src="src/images/dubstep.mp4" type="video/mp4">
+        <source src="dubstep.mp4" type="video/mp4">
     </video>
 
-    <img id="halal" src="src/images/halal.png" alt="ja">
+    <img id="halal" src="halal.png" alt="ja">
 </div>
 
 

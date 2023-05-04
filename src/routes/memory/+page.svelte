@@ -1,12 +1,12 @@
 <script>
   let cards = [];
 
-  let cardimages = ["src/images/tl_face.png",
-  "src/images/tl_face.png",
-  "src/images/greyface.png",
-  "src/images/greyface.png",
-  "src/images/greenskull.png",
-  "src/images/greenskull.png",];
+  let cardimages = ["tl_face.png",
+  "tl_face.png",
+  "greyface.png",
+  "greyface.png",
+  "greenskull.png",
+  "greenskull.png",];
     
   shuffle(cardimages)
 
@@ -109,7 +109,7 @@
       {/each}
     </div>
   </main>
-  <img class="reset_button" src="src/images/restart.png" alt ="" on:keypress={()=>{ restart(); }} on:click={()=>{ restart(); }}/>
+  <img class="reset_button" src="restart.png" alt ="" on:keypress={()=>{ restart(); }} on:click={()=>{ restart(); }}/>
   
   <style>
     
