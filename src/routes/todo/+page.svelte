@@ -119,7 +119,7 @@
     .add_button {
         width: 25px;
         height: 25px;
-        background-image: url(src/images/alien.jpeg);
+        background-image: url(images/alien.jpeg);
         border-radius: 20%;
         background-size:cover;
         margin-left: 42%;
@@ -128,7 +128,7 @@
     .remove_button {
         width: 15px;
         height: 15px;
-        background-image: url(src/images/tl_face.png);
+        background-image: url(images/tl_face.png);
         border-radius: 50%;
         background-size:cover;
 

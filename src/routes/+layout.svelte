@@ -36,7 +36,7 @@
 
     @font-face {
       font-family: csfont;
-      src: url(src/images/gamefont1.ttf);
+      src: url(gamefont1.ttf);
     }
 
     #topbar{
