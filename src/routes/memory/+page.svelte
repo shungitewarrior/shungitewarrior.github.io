@@ -89,27 +89,30 @@
   }
 
   </script>
+  <body>
+    <main>
+      <div class="row">
+        {#each cards as card, i}
+          <div
+            on:click={() => {
+              flip(card);
+            }}
+            on:keypress={() => {
+              flip(card);
+            }}
+            class:flipped={card.flipped}
+            class="card"
+          >
+            <img class="front" src={card.img} alt="" />
+            <img class="back" src="fleshdoor.png" alt="" />
+          </div>
+        {/each}
+      </div>
+    </main>
+    <img class="reset_button" src="restart.png" alt ="" on:keypress={()=>{ restart(); }} on:click={()=>{ restart(); }}/>
+  </body>
   
-  <main>
-    <div class="row">
-      {#each cards as card, i}
-        <div
-          on:click={() => {
-            flip(card);
-          }}
-          on:keypress={() => {
-            flip(card);
-          }}
-          class:flipped={card.flipped}
-          class="card"
-        >
-          <img class="front" src={card.img} alt="" />
-          <img class="back" src="fleshdoor.png" alt="" />
-        </div>
-      {/each}
-    </div>
-  </main>
-  <img class="reset_button" src="restart.png" alt ="" on:keypress={()=>{ restart(); }} on:click={()=>{ restart(); }}/>
+  
   
   <style>
     
@@ -124,8 +127,14 @@
       display: flex;
       place-content: center;
       place-items: center;
-      background-image: url(src/images/skeye.jpeg);
+
     }
+
+    body {
+      background-image: url(skeye.jpeg);
+      margin: 0%
+    }
+
     .row {
       display: grid;
       gap: 20px;

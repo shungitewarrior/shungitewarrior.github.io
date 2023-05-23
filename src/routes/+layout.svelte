@@ -7,7 +7,7 @@
             <a href="/clicker">CLICKER</a>
         </div>
         <div class="link">
-            <a href="/todo">TODO</a>
+            <a href="/todoing">TODO</a>
         </div>
         <div class="link">
             <a href="/telltale">TELLTALE</a>
@@ -32,6 +32,7 @@
         color:white;
         font-family: csfont;
         margin-left: 10px;
+        color: red;
     }
 
     @font-face {
@@ -43,6 +44,8 @@
         border-style: solid;
         border-color: #00ff11;
         background-color: #007637;
+        width: fit-content;
+        padding: 3px 10px 3px 0px
     }
 
     .link{

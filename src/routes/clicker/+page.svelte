@@ -2,27 +2,49 @@
 
 import { fly } from 'svelte/transition';
 
-$: points = 0;
-$: multiplier = 1;
-
-
+var points = 0;
+var multiplier = 1;
+/*
+setInterval(()=>{
+    units.forEach(unit => {
+        unit.Update();
+    });
+}, 1)
+*/
 class Unit {
     constructor(name, cost){
         this.name = name;
         this.cost = cost;
         this.count = 0;
+        
+    }
+    
+    set cost(newCost){this.cost = newCost}
+    get cost() {return this.cost}
+    
+
+    Update(){
+        
     }
 
     Buy(){
-        if (points < this.cost){
+        
+        console.log(typeof(this.cost));
+        return;
+
+        if (points < t.cost){
             return;
         }
-            
-        points -= this.cost;
+        
+        
+        
+
+        count += 1;
+        points -= t.cost;
         points = points;
-        this.count += 1;
-        this.cost *= 1.5;
-        this.cost = Math.round(this.cost);
+        
+        cost *= 1.5;
+        cost = Math.round(cost);
     }
     
 }

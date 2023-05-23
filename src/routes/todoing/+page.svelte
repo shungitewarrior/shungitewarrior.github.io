@@ -1,13 +1,24 @@
 <script>
-    $: todos = []
-    $: dones = []
+    import { onMount } from 'svelte';
+    
+    $: todos = JSON.parse(localStorage.getItem("todos"))
+    $: dones = JSON.parse(localStorage.getItem("dones"))
 
     var textinput = "";
+
+    $: localStorage.setItem("todos", JSON.stringify(todos))
+    $: localStorage.setItem("dones", JSON.stringify(dones))
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key == "Enter"){
+            AddTodo();
+        }
+    })
     
     function AddTodo(){
 
         if (textinput.length < 1){
-            return
+            return;
         }
 
         todos.push(textinput)
@@ -15,6 +26,8 @@
         console.log(todos)
 
         textinput = ""
+
+        console.log(localStorage.getItem("todos") + " " + localStorage.getItem("dones"));
     }
 
     function MarkAsDone(todo){
@@ -41,6 +54,7 @@
     <div class="div1">
         <input bind:value={textinput} maxlength="30" placeholder="hva skal du gjøre">
         <button class="add_button" on:click={AddTodo}></button>
+        <div></div>
     </div>
     <div class="flex-container">
         <div class="list">
@@ -119,7 +133,7 @@
     .add_button {
         width: 25px;
         height: 25px;
-        background-image: url(images/alien.jpeg);
+        background-image: url(alien.jpeg);
         border-radius: 20%;
         background-size:cover;
         margin-left: 42%;
@@ -128,7 +142,7 @@
     .remove_button {
         width: 15px;
         height: 15px;
-        background-image: url(images/tl_face.png);
+        background-image: url(tl_face.png);
         border-radius: 50%;
         background-size:cover;
 
@@ -155,8 +169,8 @@
         position: fixed;
         width: 100vw;
         height: 100vh;
-        left: 0;
-        
+        background-size: cover;
+        left:0%;
     }
     
 </style>
