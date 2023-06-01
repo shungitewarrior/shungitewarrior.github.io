@@ -1,13 +1,20 @@
 <script>
+    import { onMount } from "svelte";
+
   let cards = [];
 
   let cardimages = ["tl_face.png",
-  "tl_face.png",
-  "greyface.png",
   "greyface.png",
   "greenskull.png",
-  "greenskull.png",];
-    
+  "child worker.png",
+  "coal mine.png",
+  "default_pfp.jpg",];
+
+  let startcardlength = cardimages.length;
+  for (let index=0; index < startcardlength; index++) {
+    cardimages.push(cardimages[index]);
+  }
+
   shuffle(cardimages)
 
   let canflip = true;
@@ -32,7 +39,7 @@
         if (card.img == previouscard.img){
           previouscard.completed = true;
           card.completed = true; 
-          flipcount = -1;
+          flipcount = -1; // lite mong men de funka
         }
       }
       previouscard = card;
@@ -52,7 +59,7 @@
       }
       cards = cards;
     } else {
-      alert("chill");
+      
     }
   }
 
@@ -127,7 +134,6 @@
       display: flex;
       place-content: center;
       place-items: center;
-
     }
 
     body {
@@ -136,9 +142,10 @@
     }
 
     .row {
+      margin-top: 20px;
       display: grid;
       gap: 20px;
-      grid-template-columns: repeat(3, 100px);
+      grid-template-columns: repeat(4, 100px);
       grid-template-rows: repeat(3, 100px);
     }
     .card {

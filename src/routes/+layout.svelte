@@ -19,6 +19,12 @@
             <a href="/chatbot">CHATBOT</a>
         </div>
         <div class="link">
+            <a href="/search">SEARCH</a>
+        </div>
+        <div class="link">
+            <a href="/blog">BLOG</a>
+        </div>
+        <div class="link">
             <a href="https://github.com/shungitewarrior/shungitewarrior.github.io">SHITHUB</a>
         </div>
     </nav>
