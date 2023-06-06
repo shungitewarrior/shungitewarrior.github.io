@@ -1,21 +1,17 @@
 <script>
     import { onMount } from 'svelte';
+    
     let todos = [];
     let dones = [];
-    
-    $: todos = JSON.parse(localStorage.getItem("todos"))
-    $: dones = JSON.parse(localStorage.getItem("dones"))
+
+    onMount(async () => {
+		localStorage.setItem("todos", JSON.stringify(todos))
+        localStorage.setItem("dones", JSON.stringify(dones))
+        todos = JSON.parse(localStorage.getItem("todos"))
+        dones = JSON.parse(localStorage.getItem("dones"))
+	});
 
     var textinput = "";
-
-    $: localStorage.setItem("todos", JSON.stringify(todos))
-    $: localStorage.setItem("dones", JSON.stringify(dones))
-
-    document.addEventListener("keydown", function(event) {
-        if (event.key == "Enter"){
-            AddTodo();
-        }
-    })
     
     function AddTodo(){
 
