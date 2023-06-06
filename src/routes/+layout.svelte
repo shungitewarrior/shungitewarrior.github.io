@@ -1,3 +1,4 @@
+<div class="slot">
 <div id="topbar">
     <nav>
         <div class="link">
@@ -29,8 +30,9 @@
         </div>
     </nav>
 </div>
+<slot/>
+</div>
 
-<slot />
 
 
 <style>
@@ -44,6 +46,13 @@
     @font-face {
       font-family: csfont;
       src: url(gamefont1.ttf);
+    }
+
+    .slot {
+        
+        left:0;
+        top:0;
+        right:0;
     }
 
     #topbar{

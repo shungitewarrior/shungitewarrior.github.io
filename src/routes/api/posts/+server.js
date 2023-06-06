@@ -11,7 +11,6 @@ export const GET = async () => {
     );
   });
 
-  console.log("u8fgqe")
-
   return json(sortedPosts);
 };
+

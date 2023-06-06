@@ -7,9 +7,9 @@ var clickMultiplier = 1;
 
 let time;
 $: units = [
-new Unit("Child Worker", 2, 1000, 20),
-new Unit("Coal Mine", 2, 500, 60),
-new Unit("Sweatshop", 2, 200, 150),
+new Unit("Child Worker", 2, 3, 20),
+new Unit("Coal Mine", 2, 3, 60),
+new Unit("Sweatshop", 2, 3, 150),
 ];
 
 $: upgrades = [
@@ -22,7 +22,7 @@ $: upgrades = [
     new Upgrade("", 2),
 ]
 
-setInterval(()=>{
+setInterval(()=>{ //void Update()
     time = new Date();
     units.forEach(unit => {
         if (unit.count > 0){
@@ -32,21 +32,23 @@ setInterval(()=>{
 }, 1)
 
 class Unit {
-    constructor(name, cost, delay, baseIncrease){
+    constructor(name, cost, pertick, baseIncrease){
         this.name = name;
         this.cost = cost;
         this.count = 0;
-        this.incrementDelay = delay;
+        this.pertick = pertick;
         this.baseIncrease = baseIncrease;
-        this.nextAdd =0;
+        this.bajs = 0;
     }
 
     Update(){
         console.log(time.getTime());
-        if (time.getTime() > this.nextAdd){
-            Add();
-            this.nextAdd = time.getTime() + this.incrementDelay;
+        if (this.bajs > 1000){
+            let amount = this.bajs % 1000;
+            Add(amount);
+            this.bajs -= 1000;
         }
+        this.bajs += this.pertick;
     }
 
     Buy(){
@@ -60,7 +62,9 @@ class Unit {
         this.cost += this.baseIncrease;
         this.cost *= 1.5;
         this.cost = Math.round(this.cost);
-        this.incrementDelay /= 1.4;
+        if (this.count > 1){
+            this.pertick * 1.3;
+        }
         units = units;
     }
     
@@ -88,8 +92,8 @@ function OnClick(){
     points = points;
 }
 
-function Add(){
-    points += 1;
+function Add(amount){
+    points += amount;
     points = points;
 }
 
@@ -107,6 +111,7 @@ h1 {
 
 body {
     background-color: chartreuse;
+    margin: none;
 }
 
 button {
@@ -131,7 +136,7 @@ p {
     color: black;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size:80px;
-    background-image: url(child_worker.png);
+    background-image: url("child worker.png");
     width: 800px;
     height: 300px;
     margin-left: 25%;
