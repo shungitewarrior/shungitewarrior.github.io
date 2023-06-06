@@ -137,7 +137,7 @@
     }
 
     body {
-      background-image: url(skeye.jpeg);
+      background-image: url('/skeye.jpeg');
       margin: 0%
     }
 
