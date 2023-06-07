@@ -45,7 +45,7 @@
 
     @font-face {
       font-family: csfont;
-      src: url(gamefont1.ttf);
+      src: url('/gamefont1.ttf');
     }
 
     .slot {
