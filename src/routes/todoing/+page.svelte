@@ -1,16 +1,22 @@
 <script>
-    import { onMount } from 'svelte';
+    import { onDestroy, onMount } from 'svelte';
     
     let todos = [];
     let dones = [];
     
-    /*
-    $: todos = JSON.parse(localStorage.getItem("todos"))
-    $: dones = JSON.parse(localStorage.getItem("dones"))
-        
-    $: localStorage.setItem("todos", JSON.stringify(todos))
-    $: localStorage.setItem("dones", JSON.stringify(dones))
-    */
+    onMount(()=>{
+        todos = JSON.parse(localStorage.getItem("todos"))
+        dones = JSON.parse(localStorage.getItem("dones"))
+    });
+
+    /*$: todos = JSON.parse(localStorage.getItem("todos"))
+    $: dones = JSON.parse(localStorage.getItem("dones"))*/
+    
+    function save(){
+        localStorage.setItem("todos", JSON.stringify(todos))
+        localStorage.setItem("dones", JSON.stringify(dones))
+    }
+
     var textinput = "";
     
     function AddTodo(){
@@ -26,22 +32,26 @@
         textinput = ""
 
         console.log(localStorage.getItem("todos") + " " + localStorage.getItem("dones"));
+        save();
     }
 
     function MarkAsDone(todo){
         dones.push(todo)
         dones = dones;
         RemoveTodo(todo)
+        save();
     }
 
     function RemoveTodo(todo){
         todos.splice(todos.indexOf(todo), 1)
         todos = todos
+        save();
     }
 
     function RemoveDone(done){
         dones.splice(dones.indexOf(done), 1)
         dones = dones;
+        save();
     }
 
 </script>
