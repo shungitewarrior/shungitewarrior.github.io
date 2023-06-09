@@ -3,13 +3,15 @@
     
     let todos = [];
     let dones = [];
+    
 
-    onMount(async () => {
-		localStorage.setItem("todos", JSON.stringify(todos))
-        localStorage.setItem("dones", JSON.stringify(dones))
-        todos = JSON.parse(localStorage.getItem("todos"))
-        dones = JSON.parse(localStorage.getItem("dones"))
-	});
+    $: todos = JSON.parse(localStorage.getItem("todos"))
+    $: dones = JSON.parse(localStorage.getItem("dones"))
+        
+    $: localStorage.setItem("todos", JSON.stringify(todos))
+    $: localStorage.setItem("dones", JSON.stringify(dones))
+
+    
 
     var textinput = "";
     
@@ -49,32 +51,35 @@
 <body>
     <p class="title">my todos :3</p>
     <p>new todo:</p>
-    <div class="div1">
-        <input bind:value={textinput} maxlength="30" placeholder="hva skal du gjøre">
-        <button class="add_button" on:click={AddTodo}></button>
-        <div></div>
-    </div>
-    <div class="flex-container">
-        <div class="list">
-            TODO:
-            {#each todos as todo}
-            <article class="todo">
-                <button class="remove_button" on:click={RemoveTodo(todo)}></button>
-                <button class="move_button" on:click={MarkAsDone(todo)}></button>
-                {todos.indexOf(todo) + 1 + ". " + todo}
-            </article>
-            {/each}  
+    <div>
+        <div class="div1">
+            <input bind:value={textinput} maxlength="30" placeholder="hva skal du gjøre">
+            <button class="add_button" on:click={AddTodo}>ADD</button>
+            <div></div>
         </div>
-        <div class="list">
-            DONE:
-            {#each dones as done}
-            <article class="done">
-                <button class="remove_button" on:click={RemoveDone(done)}></button>
-                {dones.indexOf(done) + 1 + ". " + done}
-            </article>
-            {/each}
+        <div class="flex-container">
+            <div class="list">
+                TODO:
+                {#each todos as todo}
+                <article class="todo">
+                    <button class="remove_button" on:click={RemoveTodo(todo)}></button>
+                    <button class="move_button" on:click={MarkAsDone(todo)}></button>
+                    {todos.indexOf(todo) + 1 + ". " + todo}
+                </article>
+                {/each}  
+            </div>
+            <div class="list">
+                DONE:
+                {#each dones as done}
+                <article class="done">
+                    <button class="remove_button" on:click={RemoveDone(done)}></button>
+                    {dones.indexOf(done) + 1 + ". " + done}
+                </article>
+                {/each}
+            </div>
         </div>
     </div>
+    
 
 </body>
 
@@ -97,19 +102,10 @@
         padding-right: 10px;
     }
 
-    .flex-container{
-        display: flex;
-        justify-content: center;
-        overflow: clip;
-        white-space: normal;
-        flex-direction: row;
-        gap:10px;
-    }
-
     .list {
         display: flex;
         flex-direction: column;
-        background-color: chartreuse;
+        background-color: grey;
         border-radius: 5px;
         padding-left: 10px;
         padding-right: 10px;
@@ -120,21 +116,14 @@
     }
 
     p {
-        color: white;
+        color: black;
         text-align: center;
     }
-
-    .div1 {
-        align-items: center;
-    }
-
     .add_button {
-        width: 25px;
-        height: 25px;
-        background-image: url('/alien.jpeg');
-        border-radius: 20%;
+        width: fit-content;
+        height: fit-content;
         background-size:cover;
-        margin-left: 42%;
+        justify-self: center;
     }
 
     .remove_button {
@@ -147,13 +136,8 @@
         display:inline-block;
     }
 
-    input {
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+    .div1 {
+        margin: 0 auto;
     }
 
     .move_button {
@@ -163,7 +147,7 @@
     }
 
     body {
-        background-color:blue;
+        background-color:white;
         position: fixed;
         width: 100vw;
         height: 100vh;

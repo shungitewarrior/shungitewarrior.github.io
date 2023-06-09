@@ -1,14 +1,6 @@
 ---
-title: Post three
+title: Post One
 date: "2022-11-30"
 ---
 
-<h1>Tjena</h1>
-
-# you
-
----
-
-## Whatup
-
-**sick** dude
+Hej här är den första och sista blogposten som jag kommer göra :)
