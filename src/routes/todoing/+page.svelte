@@ -3,6 +3,7 @@
     
     let todos = [];
     let dones = [];
+    
     /*
     $: todos = JSON.parse(localStorage.getItem("todos"))
     $: dones = JSON.parse(localStorage.getItem("dones"))
