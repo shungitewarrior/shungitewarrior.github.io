@@ -7,6 +7,12 @@
     onMount(()=>{
         todos = JSON.parse(localStorage.getItem("todos"))
         dones = JSON.parse(localStorage.getItem("dones"))
+        if (todos == undefined){
+            localStorage.setItem('dones', JSON.stringify([]))
+            localStorage.setItem('todos', JSON.stringify([]))
+            todos = [];
+            dones = [];
+        }
     });
 
     /*$: todos = JSON.parse(localStorage.getItem("todos"))
