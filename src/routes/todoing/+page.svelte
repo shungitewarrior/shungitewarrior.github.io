@@ -123,6 +123,12 @@
         background-size:cover;
         justify-self: center;
     }
+    .flex-container {
+        width: fit-content;
+        display:flex;
+        justify-content: center;
+        margin: 0 auto;
+    }
 
     .remove_button {
         width: 15px;
@@ -135,6 +141,7 @@
     }
     .div1 {
         margin: 0 auto;
+        width:fit-content;
     }
 
     .move_button {
