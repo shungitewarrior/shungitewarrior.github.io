@@ -133,7 +133,6 @@
 
         display:inline-block;
     }
-
     .div1 {
         margin: 0 auto;
     }
